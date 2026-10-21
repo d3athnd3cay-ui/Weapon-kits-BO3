@@ -1,0 +1,197 @@
+{
+  "scropts": {
+    "repo": "Scroptss/Scropts-QOL",
+    "commit": "bbd4a19cead88372bb227d489a84d32c86a30e60",
+    "note": "Public source commit audited in this conversation; not proven identical to v3.2.5 binary."
+  },
+  "minhook": {
+    "repo": "TsudaKageyu/minhook",
+    "commit": "c3fcafdc10146beb5919319d0683e44e3c30d537",
+    "tag": "v1.3.4",
+    "build": "build/VC17/libMinHook.vcxproj Release|x64"
+  },
+  "detours": {
+    "repo": "microsoft/Detours",
+    "commit": "e4bfd6b03e50de46b47abfbd1e46b384f0c5f833",
+    "tag": "v4.0.1",
+    "build": "src/nmake x64"
+  },
+  "security_changes": {
+    "defender_disabled": false,
+    "defender_exclusions_added": false,
+    "precompiled_dependency_libs_used": false
+  },
+  "builder_version": "35-unified-native-weapon-kits",
+  "builder_fixes": [
+    "Use $(ProjectDir) for MinHook and Detours linker paths.",
+    "Validate patched dependency paths before build.",
+    "Apply September 2026 code RVA translation based on public Scroptss/T7Patch-src GameBuild.h.",
+    "Reject unsupported BO3 executable fingerprints before hook installation.",
+    "Fix PowerShell StrictMode scope for September compatibility translation counters.",
+    "Make DllMain supported-build guard insertion tolerant of CRLF/LF and whitespace differences."
+  ],
+  "t7patch_compatibility": {
+    "repository": "Scroptss/T7Patch-src",
+    "commit": "46b268a6cda05ac5ee2f8ff88c6db9f6d549df71",
+    "purpose": "September 2026 BO3 build detection and RVA translation only",
+    "shift_start_rva": "0x1D29C20",
+    "primary_code_end_rva": "0x2EFF000",
+    "september_code_delta": "-0x6C0"
+  },
+  "diagnostic": {
+    "overlay_only": true,
+    "disabled_call": "hooks::onFrame()",
+    "purpose": "Isolate crash from old per-frame/checksum/game-hook path"
+  },
+  "compatibility_test": {
+    "onframe_enabled": false,
+    "enabled_hooks": [
+      "BG_UnlockablesItemOptionLocked",
+      "LiveInventory_GetItemQuantity",
+      "LiveEntitlements_IsEntitlementActiveForController"
+    ],
+    "checksum_patch_path_enabled": false,
+    "server_hooks_enabled": false,
+    "full_apply_hooks_button_enabled": false
+  },
+  "mp_class_editor_fix": {
+    "direct_cac_write_in_multiplayer": true,
+    "uses_combo_type_parameter": true,
+    "camo_row_metadata_corrected": true,
+    "uploads_stats_after_mp_item_write": true,
+    "full_legacy_hook_bundle_enabled": false
+  },
+  "grand_slam_menu": {
+    "button_added": true,
+    "handler": "runDvars(SUPPLY_DROP_GRAND_SLAM)",
+    "existing_source_implementation_reused": true
+  },
+  "grand_slam_contract_fix": {
+    "contract_index": 3010,
+    "special_contract_slot": 3,
+    "extra_bool": 11,
+    "resets_progress": true,
+    "clears_award_given": true,
+    "disables_triple_play_dvars": true,
+    "grand_slam_drop_id_spoof_exception": 99083
+  },
+  "grand_slam_no_match_reward_sync": {
+    "contract_index": 3010,
+    "hard_complete_uses_existing_unlockContracts": true,
+    "real_inventory_watch": {
+      "weapon_3x_bundle": 99087,
+      "limited_edition_camo_bundle": 99086,
+      "rare_20_bundle": 99128
+    },
+    "sync_helper": "GiveLootToSelf(0,1,100)",
+    "max_sync_pulses": 30,
+    "purchases_cod_point_offer": false,
+    "legacy_full_hook_bundle_enabled": false
+  },
+  "v14_1_fix": {
+    "issue": "Exact multiline cryptokey loop match could fail on whitespace/line-ending differences",
+    "fix": "Regex-based cryptokey loop discovery and insertion",
+    "reward_sync_behavior_changed": false
+  },
+  "grand_slam_reward_retry": {
+    "mechanism": "BO3 Lobby.Events reward_retry_perform_action",
+    "contract_index": 3010,
+    "completion_path": "extraBools 11",
+    "reward_inventory_item": 99085,
+    "reward_sku": 99084,
+    "requires_live_frontend": true
+  },
+  "cryptokey_spender_modes": {
+    "regular_rare": {
+      "dwid": 1,
+      "currency": 2,
+      "display_cost_ck": 30
+    },
+    "no_dupe_rare": {
+      "dwid": 35,
+      "currency": 2,
+      "display_cost_ck": 60
+    }
+  },
+  "v16_no_dupe_fix": {
+    "crate_type": 18,
+    "crate_name": "loot_noDupeRare",
+    "dwid": 35,
+    "currency_type": 2,
+    "cryptokey_cost": 60,
+    "v15_bug": "DWID 35 was incorrectly passed as Loot_BuyCrate CrateType"
+  },
+  "v16_grand_slam_persistent_retry": {
+    "contract_index": 3010,
+    "completion_marker": "extraBools[11]",
+    "reward_inventory_item": 99085,
+    "reward_sku": 99084,
+    "interval_ms": 2500,
+    "max_pulses": 24,
+    "approx_timeout_seconds": 60
+  },
+  "v16_1_fix": {
+    "issue": "Exact per-Present bCrypto block string match failed after earlier patch stages",
+    "fix": "Whitespace/line-ending tolerant regex lookup and indexed insertion",
+    "runtime_behavior_changed": false
+  },
+  "v17": {
+    "grand_slam_ui": "active-contract-only",
+    "grand_slam_activation_sets_extraBool11": false,
+    "removed_nonworking_reward_ui": true,
+    "spend_selector": [
+      "Rare (30 CK)",
+      "No-Dupe Rare (60 CK)"
+    ],
+    "no_dupe_mapping": {
+      "loot_rarecrate_dwid": 35,
+      "loot_noduperare_dwid": 35,
+      "loot_noduperare_cryptocost": 60,
+      "loot_buy_crate_call": "Loot_BuyCrate(0, 1, 2)"
+    },
+    "normal_rare_mapping": {
+      "loot_rarecrate_dwid": 2,
+      "loot_buy_crate_call": "Loot_BuyCrate(0, 1, 2)"
+    }
+  },
+  "v18_legacy_camos": {
+    "versions": {
+      "101": "Luck of the Irish",
+      "102": "Into the Void / limited PAP camo",
+      "103": "Cherry Fizz",
+      "104": "Empire",
+      "105": "Permafrost / Winter Blue",
+      "106": "Hive / Amber",
+      "108": "Watermelon"
+    },
+    "combined_dvar_value": ",101,102,103,104,105,106,108",
+    "disables_inventory_spoof_for_testing": true,
+    "disables_entitlement_spoof_for_testing": true,
+    "grand_slam_bundle_camos_included": false
+  },
+  "extension_patch": "SourcePatches/ZombiesKitUI.v35.inc",
+  "v28_schema_correction": {
+    "case_sensitive_member": "cacLoadouts",
+    "array_navigation": "DDL_MoveToIndex",
+    "platform_tested": false
+  },
+  "version": "v35",
+  "native_apply": "Enabled only when explicitly selected in offline Zombies and the schema, identity, and complete 50-slot checks pass",
+  "v30_readonly_probe": {
+    "catalog": "Zombies stat table",
+    "mp_id": "comparison-only",
+    "schema_candidates": [
+      "cacLoadouts.variant",
+      "cacloadouts.variant",
+      "variant(root)"
+    ],
+    "native_writes": "v35 allows offline verified native writes with explicit external backup confirmation"
+  },
+  "experiment": {
+    "feature": "Create a missing native kit for ordinary, asset-listed base firearm with matching MP/ZM ID in strictly verified empty 0x14 variant slot",
+    "status": "UNTESTED in-game; requires separate creation checkbox and backup confirmation; no Bowie/melee or unsupported attachments",
+    "confirmed_baseline": "User verified v32 Brecci attachments and camo persisted, v33 eight attachments persisted; v34 Kuda native write returned success"
+  },
+  "ui": "Compact main actions; cosmetics and diagnostics behind collapsed Advanced section",
+  "optics": "Slot 0 reserved for optic (inherited v34; in-game position not confirmed by user)"
+}

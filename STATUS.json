@@ -1,0 +1,9 @@
+{
+  "version": "v35",
+  "feature": "Simplified UI + unified offline Save & Apply and experimental missing-base-gun native kit creation",
+  "offline_file": "0x14 verified by user",
+  "verified": "v32 Brecci native attachments/camo persisted, v33 eight attachments persisted, v34 Kuda success reported",
+  "experimental": "v35 missing normal firearm kit creation; not tested in BO3",
+  "safety": "Requires separate opt-in for creation; full external players backup mandatory; schema and 50 slots verified; offline only",
+  "not_supported": "Bowie knife, alternate animations, unsupported weapon assets, online/cloud"
+}
