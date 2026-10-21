@@ -2,6 +2,7 @@
 #include "includes.h"
 #include "common.h"
 #include <algorithm>
+#include <sstream>
 
 namespace utils {
 

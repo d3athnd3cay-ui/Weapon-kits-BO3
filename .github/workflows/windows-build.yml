@@ -49,7 +49,7 @@ jobs:
           }
           if ($failed) {
             $lines = @(Get-Content $log -Tail 180)
-            $errors = @($lines | Where-Object { $_ -match '(?i)error|fatal|exception|command failed' })
+            $errors = @($lines | Where-Object { $_ -match '(?i)error|fatal|exception|command failed' } | Select-Object -Unique)
             if ($errors.Count -eq 0) { $errors = $lines | Select-Object -Last 35 }
             $message = ($errors -join "`n")
             if ($message.Length -gt 8000) { $message = $message.Substring($message.Length - 8000) }

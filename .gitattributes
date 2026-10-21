@@ -2,3 +2,4 @@
 *.vcxproj whitespace=cr-at-eol
 *.vcxproj.filters whitespace=cr-at-eol
 *.sln whitespace=cr-at-eol
+*.hpp whitespace=cr-at-eol
