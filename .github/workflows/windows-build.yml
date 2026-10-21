@@ -18,12 +18,30 @@ jobs:
           persist-credentials: false
       - name: Source contract checks
         shell: pwsh
+        env:
+          PYTHONUTF8: '1'
         run: |
           python -m unittest discover -s tests -p "test_*.py" -v
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Compile and run native tests, then build the DLL
         shell: pwsh
-        run: ./Build-Local.ps1 -Jobs 2
+        run: |
+          $log = Join-Path $env:RUNNER_TEMP 'weapon-kits-build.txt'
+          $failed = $false
+          try {
+            ./Build-Local.ps1 -Jobs 2 *>&1 | Tee-Object -FilePath $log
+          } catch {
+            $failed = $true
+            $_ | Out-String | Tee-Object -FilePath $log -Append
+          } finally {
+            '## Windows C++17 build output' | Out-File $env:GITHUB_STEP_SUMMARY -Append
+            '```text' | Out-File $env:GITHUB_STEP_SUMMARY -Append
+            if (Test-Path $log) {
+              Get-Content $log -Tail 180 | Out-File $env:GITHUB_STEP_SUMMARY -Append
+            }
+            '```' | Out-File $env:GITHUB_STEP_SUMMARY -Append
+          }
+          if ($failed) { exit 1 }
       - name: Save DLL and verification reports
         uses: actions/upload-artifact@v4
         with:
