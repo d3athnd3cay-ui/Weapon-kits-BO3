@@ -1,0 +1,18 @@
+V15 GRAND SLAM REWARD RETRY + NO-DUPE CRYPTOKEY SPENDER
+
+Grand Slam reward retry:
+  Uses BO3's normal Lobby.Events reward_retry_perform_action mechanism.
+  Grand Slam contract row 3010 maps:
+    extraBools[11] -> completion/reward-needed flag
+    99085 -> reward inventory item
+    99084 -> reward redeem SKU
+  BO3's LuaUtils.BuySpecialContractRewardsIfNeeded() calls PurchaseDWSKU(99084)
+  when extraBools[11] is set and inventory item 99085 is absent.
+
+Cryptokey spender:
+  Regular Rare -> Loot_BuyCrate(0, 1, 2)
+  No-Dupe Rare -> activates no-dupe event dvars and calls Loot_BuyCrate(0, 35, 2)
+  No-Dupe event cost is 60 Cryptokeys.
+
+All v14.1 compatibility patches remain intact.
+The legacy full hook bundle remains disabled.

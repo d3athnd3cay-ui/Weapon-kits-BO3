@@ -1,0 +1,24 @@
+V18 LEGACY LIMITED CAMOS
+
+BO3 frontend purchase construction:
+  InventoryVersion = loot_mpItemVersions + loot_limitedTimeItemVersions
+
+Historical limited camo versions enabled by this patch:
+  101 = Luck of the Irish
+  102 = Into the Void / limited PAP camo
+  103 = Cherry Fizz
+  104 = Empire
+  105 = Permafrost / Winter Blue
+  106 = Hive / Amber
+  108 = Watermelon
+
+The menu can enable one version at a time or all at once.
+It disables Blackmarket Items and Entitlements spoofing when enabled
+so the displayed inventory quantity is a real-account check.
+
+Grand Slam camo-bribe camos (camo_dlc3_pap_var_02 / _03) use a
+separate dedicated bundle path and are not supplied by these versions.
+
+This patch does not forge a server inventory grant. It makes normal
+Black Market purchase requests advertise the historical inventory
+versions exactly through the field BO3 itself uses.

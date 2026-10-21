@@ -1,0 +1,4 @@
+DIAGNOSTIC BUILD - NOT FOR UNLOCKING/STATS
+hooks::onFrame() is disabled.
+This prevents PatchPrecomputed(), applyPatches(), server hooks, and other per-frame game patching from starting through hooks::onFrame().
+Purpose: verify whether the overlay can remain loaded without the post-render patch path.

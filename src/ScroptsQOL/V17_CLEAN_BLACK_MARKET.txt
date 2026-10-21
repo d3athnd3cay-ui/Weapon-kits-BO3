@@ -1,0 +1,18 @@
+V17 CLEAN BLACK MARKET
+
+Grand Slam:
+  One working UI action remains: set contract 3010 active at 0/125.
+  Activation no longer incorrectly sets completion flag extraBools[11].
+  Removed non-working reward retry/sync buttons and counters.
+  Removed 4000-CP Grand Slam promo manipulation from the contract button.
+
+Cryptokeys:
+  Replaced broken one-entry combo with two explicit radio buttons.
+  Rare (30 CK) restores loot_rarecrate_dwid = 2.
+  No-Dupe Rare (60 CK) enables the shipped no-dupe event values.
+  Critical fix: No-Dupe sets loot_rarecrate_dwid = 35, then calls
+  Scropts' normal Rare helper Loot_BuyCrate(0, 1, 2).
+  This mirrors BO3's rare_crate_no_dupe_preview_ON event.
+
+The full legacy crash-prone hook bundle remains disabled.
+No checksum/integrity bypass is added or enabled.

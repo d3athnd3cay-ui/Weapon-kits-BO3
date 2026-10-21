@@ -1,0 +1,8 @@
+September 2026 compatibility source: Scroptss/T7Patch-src
+T7Patch source commit: 46b268a6cda05ac5ee2f8ff88c6db9f6d549df71
+Translation rule source file: GameBuild.h
+Shift start RVA: 0x1D29C20
+Primary code end RVA: 0x2EFF000
+September code delta: -0x6C0
+Direct ProcessBase code references translated: 180
+Unknown BO3 executable builds are rejected before hook installation.

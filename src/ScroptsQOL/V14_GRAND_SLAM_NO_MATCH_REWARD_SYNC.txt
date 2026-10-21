@@ -1,0 +1,12 @@
+V14 GRAND SLAM NO-MATCH REWARD SYNC
+Adds an isolated Hard Complete Grand Slam button using Scropts' own unlockContracts(3010,3011,3) path.
+Shows real (unspoofed) inventory quantities for:
+  99087 = Weapon 3X bundle
+  99086 = Limited Edition Camo bundle
+  99128 = Rare 20 bundle
+Adds an optional no-match reward sync experiment:
+  calls GiveLootToSelf(0,1,100) once per second
+  max 30 pulses
+  stops early when both 99087 and 99086 are real inventory
+Does NOT purchase the 4000 COD Point Grand Slam offer.
+Does NOT re-enable the legacy crash-prone hook bundle.

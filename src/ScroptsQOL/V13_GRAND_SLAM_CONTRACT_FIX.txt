@@ -1,0 +1,8 @@
+V13 GRAND SLAM CONTRACT FIX
+Replaces the active MP special contract with Grand Slam contract 3010.
+Sets contracts[3]: active=1, index=3010, progress=0, award_given=0.
+Sets extraBools[11]=1 per mp_contracttable.csv.
+Disables Triple Play promo DVARs before enabling Grand Slam.
+Sets loot_grandslam_cpcost=4000 per BO3 event data.
+Excludes Grand Slam drop item 99083 from the Blackmarket Items quantity spoof so the UI can see quantity 0.
+All prior v12 compatibility changes remain intact.

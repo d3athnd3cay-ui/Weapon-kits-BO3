@@ -1,0 +1,8 @@
+MULTIPLAYER CLASS EDITOR FIX
+Based on v10 Black Market + Entitlements compatibility build.
+New Class Editor MP item writes use the direct CAC DDL path used by the Old Class Editor.
+setClassSetItem now uses its iComboBoxtype argument instead of the global iComboBoxType.
+Primary/Secondary Camo row metadata corrected.
+MP item edits call LiveStorage_UploadStatsForController(0) after writing.
+The v10 minimal Black Market + Entitlements hooks remain enabled.
+The crash-prone full legacy hook bundle remains disabled.

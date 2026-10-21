@@ -1,0 +1,11 @@
+BLACK MARKET + ENTITLEMENTS COMPATIBILITY TEST BUILD
+hooks::onFrame() remains disabled from v7.
+Enabled hooks:
+  BG_UnlockablesItemOptionLocked
+  LiveInventory_GetItemQuantity
+  LiveEntitlements_IsEntitlementActiveForController
+Disabled:
+  PatchPrecomputed/checksum patch path
+  server hooks
+  gameplay hook bundle
+  full Apply Hooks menu action

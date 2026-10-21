@@ -1,0 +1,7 @@
+v22 Crash Isolation - kits
+DIAGNOSTIC ONLY: normal controls, edits and weapon kits are deliberately disabled.
+DO NOT interpret passing this test as a verified fix.
+Profile overlay: DirectX overlay only.
+Profile core: original exception and pointer swaps, no 3 extra hooks.
+Profile option, quantity, entitlement: core + one test hook.
+Profile all: core + all 3 test hooks.

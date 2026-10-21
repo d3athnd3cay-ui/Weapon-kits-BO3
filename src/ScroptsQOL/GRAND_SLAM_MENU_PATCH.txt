@@ -1,0 +1,9 @@
+GRAND SLAM MENU BUTTON PATCH
+Adds Black Market -> Misc -> Grand Slam Supply Drops.
+Uses the public source's existing SUPPLY_DROP_GRAND_SLAM runDvars implementation.
+That existing implementation sets:
+  loot_limitedTimeItemPromo_active = 1
+  loot_limitedTimeItemPromo_promoString = Scropts
+  loot_limitedTimeItemPromo_promoIcon = t7_icon_blackmarket_promo_grandslam_green
+  loot_grandSlam_active = 1
+All v11 compatibility changes remain intact.

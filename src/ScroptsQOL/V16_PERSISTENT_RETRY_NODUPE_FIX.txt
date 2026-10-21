@@ -1,0 +1,17 @@
+V16 PERSISTENT GRAND SLAM RETRY + NO-DUPE FIX
+
+NO-DUPE FIX:
+  v15 bug: passed DWID 35 as Loot_BuyCrate CrateType.
+  Correct call: Loot_BuyCrate(0, 18, 2).
+  BO3 loot_crate.csv maps CrateType 18 -> loot_noDupeRare.
+  The event maps loot_noDupeRare to DWID 35 and cost 60 Cryptokeys.
+
+GRAND SLAM RETRY:
+  Re-asserts contract 3010 completion and uploads stats once.
+  Re-queues BO3's reward_retry_perform_action every 2.5s.
+  Maximum 24 retry pulses (~60 seconds).
+  Stops early when REAL inventory item 99085 appears.
+  Native BO3 path should then redeem reward SKU 99084.
+
+No checksum/integrity bypass is added or re-enabled.
+The legacy full hook bundle remains disabled.
