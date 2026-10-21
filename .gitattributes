@@ -1,0 +1,4 @@
+# Preserve imported Windows project line endings without treating CR as whitespace.
+*.vcxproj whitespace=cr-at-eol
+*.vcxproj.filters whitespace=cr-at-eol
+*.sln whitespace=cr-at-eol

@@ -1,0 +1,38 @@
+name: Windows C++17 build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  native-dll:
+    runs-on: windows-2022
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Source contract checks
+        shell: pwsh
+        run: |
+          python -m unittest discover -s tests -p "test_*.py" -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Compile and run native tests, then build the DLL
+        shell: pwsh
+        run: ./Build-Local.ps1 -Jobs 2
+      - name: Save DLL and verification reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: WeaponKitsBO3-v36-Windows-x64
+          if-no-files-found: error
+          path: |
+            build/bin/WeaponKitsBO3.v36.dll
+            build/bin/WeaponKitsBO3.v36.dll.sha256
+            build/bin/headers.txt
+            build/bin/imports.txt
+            build/bin/build-report.txt
+            build/tests/results.txt
